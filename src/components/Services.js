@@ -65,7 +65,7 @@ const Services = () => {
           </div>
 
           {/* Benefits List */}
-          <div className="max-w-3xl">
+          <div className="max-w-5xl">
             <h4 className="text-lg text-start text-2xl mb-4">Benefits Of FarmFusion</h4>
             <ul className="space-y-4">
               {/* Benefit 1: Increase Crop Yield */}
@@ -73,17 +73,17 @@ const Services = () => {
                 className={`border-t py-4 cursor-pointer ${expandedIndex === 1 ? 'text-white' : ''}`} 
                 onClick={() => toggleExpand(1)}
               >
-                <div className={`flex justify-between items-center text-2xl ${expandedIndex === 1 ? 'bg-lime-500': ''}`}>
+                <div className={`flex justify-between items-center text-5xl`}>
                   <div className={`font-medium`}>
-                    <span className={`mr-12 ${expandedIndex === 1 ? 'text-white' : 'text-gray-800'}`}>01</span>
-                    <span className={expandedIndex === 1 ? 'text-white' : 'text-gray-800'}>Increase Crop Yield</span>
+                    <span className={`mr-16 ${expandedIndex === 1 ? 'text-black' : 'text-gray-800'}`}>01</span>
+                    <span className={expandedIndex === 1 ? 'text-black' : 'text-gray-800'}>Increase Crop Yield</span>
                   </div>
-                  <span className={expandedIndex === 1 ? 'text-white' : 'text-lime-500'}>
+                  <span className={expandedIndex === 1 ? 'text-lime-500' : 'text-black'}>
                     {expandedIndex === 1 ? 'v' : '>'}
                   </span>
                 </div>
                 {expandedIndex === 1 && (
-                  <p className="mt-4 text-lg bg-white text-black">
+                  <p className="mt-4 text-lg bg-white text-start text-black">
                     By using our organic fertilizers and technology-driven irrigation systems, you can significantly boost crop yields while maintaining sustainability.
                   </p>
                 )}
@@ -91,20 +91,20 @@ const Services = () => {
 
               {/* Benefit 2: Reduce Water Usage */}
               <li 
-                className={`border-t py-4 cursor-pointer ${expandedIndex === 2 ? 'bg-lime-500 text-white' : ''}`} 
+                className={`border-t py-4 cursor-pointer ${expandedIndex === 2 ? 'text-white' : ''}`} 
                 onClick={() => toggleExpand(2)}
               >
-                <div className="flex justify-between items-center text-2xl">
-                  <div className="font-medium">
-                    <span className={`mr-12 ${expandedIndex === 2 ? 'text-white' : 'text-gray-800'}`}>02</span>
-                    <span className={expandedIndex === 2 ? 'text-white' : 'text-gray-800'}>Reduce Water Usage</span>
+                <div className={`flex justify-between items-center text-5xl`}>
+                  <div className={`font-medium`}>
+                    <span className={`mr-16 ${expandedIndex === 2 ? 'text-black' : 'text-gray-800'}`}>02</span>
+                    <span className={expandedIndex === 2 ? 'text-black' : 'text-gray-800'}>Reduce Water Usage</span>
                   </div>
-                  <span className={expandedIndex === 2 ? 'text-white' : 'text-lime-500'}>
+                  <span className={expandedIndex === 2 ? 'text-lime-500' : 'text-black'}>
                     {expandedIndex === 2 ? 'v' : '>'}
                   </span>
                 </div>
                 {expandedIndex === 2 && (
-                  <p className="mt-4 text-lg">
+                  <p className="mt-4 text-lg bg-white text-start text-black">
                     Our advanced irrigation technologies reduce water waste, making sure that water is used more efficiently while still optimizing growth.
                   </p>
                 )}
@@ -112,20 +112,20 @@ const Services = () => {
 
               {/* Benefit 3: Improve Soil Health */}
               <li 
-                className={`border-t border-b py-4 cursor-pointer ${expandedIndex === 3 ? 'bg-lime-500 text-white' : ''}`} 
+                className={`border-t py-4 cursor-pointer ${expandedIndex === 3 ? 'text-white' : ''}`} 
                 onClick={() => toggleExpand(3)}
               >
-                <div className="flex justify-between items-center text-2xl">
-                  <div className="font-medium">
-                    <span className={`mr-12 ${expandedIndex === 3 ? 'text-white' : 'text-gray-800'}`}>03</span>
-                    <span className={expandedIndex === 3 ? 'text-white' : 'text-gray-800'}>Improve Soil Health</span>
+                <div className={`flex justify-between items-center text-5xl`}>
+                  <div className={`font-medium`}>
+                    <span className={`mr-16 ${expandedIndex === 3 ? 'text-black' : 'text-gray-800'}`}>03</span>
+                    <span className={expandedIndex === 3 ? 'text-black' : 'text-gray-800'}>Improve Soil Health</span>
                   </div>
-                  <span className={expandedIndex === 3 ? 'text-white' : 'text-lime-500'}>
+                  <span className={expandedIndex === 3 ? 'text-lime-500' : 'text-black'}>
                     {expandedIndex === 3 ? 'v' : '>'}
                   </span>
                 </div>
                 {expandedIndex === 3 && (
-                  <p className="mt-4 text-lg">
+                  <p className="mt-4 text-lg bg-white text-start text-black">
                     Our soil health monitoring tools and organic fertilizers help restore and maintain soil health, ensuring long-term fertility.
                   </p>
                 )}
