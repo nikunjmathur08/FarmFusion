@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 px-4 md:px-20">
+    <footer id="#about" className="bg-black text-white py-8 px-4 md:px-20">
       <div className="flex flex-col items-center md:flex-row md:justify-between">
         <div className="text-center mb-4 md:mb-0">
           <p className="text-gray-400">&copy; FarmFusion 2024</p>
@@ -28,6 +28,7 @@ const Footer = () => {
           <div className="bg-black text-white p-2 rounded-full">
             <img 
               src='/up.png'
+              alt='up-arrow'
               className="h-5 w-5"
             />
           </div>

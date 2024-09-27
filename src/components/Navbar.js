@@ -10,7 +10,7 @@ const Navbar = () => {
       <ul className="flex space-x-12"> {/* Increase space between links */}
         <li>
           <a
-            href="#services"
+            href="/services"
             className="text-white text-lg transition-colors duration-300 ease-in-out hover:text-gray-300"
           >
             Services
@@ -18,10 +18,10 @@ const Navbar = () => {
         </li>
         <li>
           <a
-            href="#products"
+            href="/solutions"
             className="text-white text-lg transition-colors duration-300 ease-in-out hover:text-gray-300"
           >
-            Products
+            Solutions
           </a>
         </li>
         <li>
@@ -37,13 +37,13 @@ const Navbar = () => {
       {/* Right Section: Buttons */}
       <div className="flex items-center space-x-6">
         <a
-          href="#login"
+          href="/signin"
           className="text-white text-lg transition-colors duration-300 ease-in-out hover:text-gray-300"
         >
           Log In
         </a>
         <a
-          href="#signup"
+          href="/signin"
           className="bg-white text-black rounded-full py-3 px-8 text-lg font-bold hover:bg-black hover:text-white transition-all duration-300"
         >
           Sign Up
