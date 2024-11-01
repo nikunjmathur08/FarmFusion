@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FarmerHelpApplication<farmer-help>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.farmerhelp.FarmerHelpApplication",
+            "projectName": "farmer-help",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
