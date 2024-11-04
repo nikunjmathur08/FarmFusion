@@ -14,13 +14,39 @@ public class WeatherData {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate date;
+    public LocalDate date;
 
-    private String time;
-    private Double temperature;
-    private Double precipitation;
-    private Double cloudCover;
-    private Double windSpeed;
-    private Double soilTemp;
-    private Double soilMoisture;
+    @Column()
+    public String time;
+    @Column()
+    public Double temperature;
+    @Column()
+    public Double setTemperature(double temperature) {
+        return temperature;
+    }
+    @Column()
+    public Double precipitation;
+    public Double setPrecipitation(double precipitation) {
+        return precipitation;
+    }
+    @Column()
+    public Double cloudCover;
+    public Double setCloudCover(double cloudCover) {
+        return cloudCover;
+    }
+    @Column()
+    public Double windSpeed;
+    public Double setWindSpeed(double windSpeed) {
+        return windSpeed;
+    }
+    @Column()
+    public Double soilTemp;
+    public Double setSoilTemp(double soilTemp) {
+        return soilTemp;
+    }
+    @Column()
+    public Double soilMoisture;
+    public Double setSoilMoisture(double soilMoisture) {
+        return soilMoisture;
+    }
 }

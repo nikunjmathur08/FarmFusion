@@ -26,14 +26,14 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/signup")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, HttpSession session) {
         User user = userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
         session.setAttribute("userId", user.getId());
         return ResponseEntity.ok(new ApiResponse(true, "User signed in successfully", user.getUsername()));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/signin")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         User user = userService.registerUser(signUpRequest.getUsername(), signUpRequest.getEmail(), signUpRequest.getPassword());
         return ResponseEntity.ok(new ApiResponse(true, "User registered successfully", user.getUsername()));

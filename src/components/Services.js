@@ -6,7 +6,6 @@ const fetchLocationData = async (cityName) => {
       `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=en&format=json`
     );
     const data = await response.json();
-    console.log("Location data:", data);
     
     if (data.results?.[0]) {
       return {
@@ -30,7 +29,6 @@ const fetchWeatherData = async (latitude, longitude) => {
     const response = await fetch(apiUrl);
     if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
-    console.log("Fetched weather data: ", data);
     return data;
   } catch (error) {
     console.error("Error fetching weather data:", error);
@@ -133,7 +131,6 @@ const Services = () => {
   const calculateAverage = (hourlyData) => {
     try {
       const length = hourlyData.time.length;
-      console.log("Calculating averages for length:", length);
 
       return {
         avgTemperature:

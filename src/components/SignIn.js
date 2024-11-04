@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import googleLogo from '../assets/Logo.png';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const FormContainer = styled.div`
   width: 80%;
@@ -32,7 +33,6 @@ const Heading = styled.h2`
   // font-family: Inter;
   margin-bottom: 40px;
 `;
-
 
 const Input = styled.input`
   margin-bottom: 15px;
@@ -86,7 +86,33 @@ const Para = styled.p`
   margin-bottom: 20px;
 `;
 
+const ErrorMessage = styled.p`
+  color: #ff0000;
+  text-align: center;
+  margin-top: 10px;
+`;
+
 const SignIn = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('api/auth/signin', { username, email, password });
+      if (response.data.success) {
+        navigate('/');
+      } else {
+        setError(response.data.message || "An error occured during signup. :/");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "An error occured during signup. ");
+    }
+  };
+
   const login = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -97,23 +123,50 @@ const SignIn = () => {
         });
         console.log(res.data);
         // Handle successful login here (e.g., save user data, navigate to another page, etc.)
+        navigate('/');
       } catch (err) {
         console.error(err);
+        setError('Failed to sign in with Google.');
       }
     },
     onFailure: (error) => {
-      console.error('Login failed:', error);
+      console.error('Signup failed:', error);
+      setError('Failed to sign up with Google');
     },
   });
   return (
     <FormContainer>
       <Heading>FarmFusion</Heading>
       <Title>Sign in to FarmFusion</Title>
-      <Form id="signInForm">
-        <Input type="email" placeholder="Enter your email" id ="signInEmail"/>
-        <Input type="password" placeholder="Enter your password" id="signInPassword"/>
-        <center><Button>Sign In</Button></center>
+      <Form onSubmit={handleSubmit} id="signUpForm">
+        <Input 
+          type="text" 
+          placeholder="Enter your username" 
+          id ="signUpUsername"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          autoFocus
+        />
+        <Input 
+          type="email" 
+          placeholder="Enter your email" 
+          id ="signUpEmail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Input 
+          type="password" 
+          placeholder="Enter your password" 
+          id="signInPassword"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <center><Button type='submit'>Sign In</Button></center>
       </Form>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <Para>or</Para>
       <center>
         <GoogleButton id="signInGoogleButton" onClick={() => login()}>

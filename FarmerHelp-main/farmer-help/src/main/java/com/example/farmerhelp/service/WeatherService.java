@@ -14,36 +14,45 @@ import java.sql.SQLException;
 @Service
 public class WeatherService {
 
-    private Connection connection;
+    // private Connection connection;
 
-    // private final WeatherDataRepository weatherDataRepository;
+    private final WeatherDataRepository weatherDataRepository;
 
-    public WeatherService(Connection connection) {
-        this.connection = connection;
+    public WeatherService(WeatherDataRepository weatherDataRepository) {
+        this.weatherDataRepository = weatherDataRepository;
     }
 
-    // public List<WeatherData> getWeatherForecastForPastWeek() {
+    public List<WeatherData> getWeatherForecastForPastWeek() {
         
-    //     LocalDate endDate = LocalDate.now();
-    //     LocalDate startDate = endDate.minusDays(7);
-    //     return weatherDataRepository.findByDateBetweenOrderByDateDesc(startDate, endDate);
-    // }
+        LocalDate endDate = LocalDate.now();
+        LocalDate startDate = endDate.minusDays(7);
+        return weatherDataRepository.findByDateBetweenOrderByDateDesc(startDate, endDate);
+    }
 
-    public void saveWeatherData(String time, double temperature, double precipitation, double cloudCover, double windSpeed, double soilTemp, double soilMoisture) {
-        String sql = "INSERT INTO weather_data (time, temperature, precipitation, cloud_cover, soil_temperature, soil_values) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public WeatherData saveWeatherData(String time, double temperature, double precipitation, double cloudCover, double windSpeed, double soilTemp, double soilMoisture) {
+        // String sql = "INSERT INTO weather_data (time, temperature, precipitation, cloud_cover, soil_temperature, soil_values) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, time);
-            pstmt.setDouble(2, temperature);
-            pstmt.setDouble(3, precipitation);
-            pstmt.setDouble(4, cloudCover);
-            pstmt.setDouble(5, windSpeed);
-            pstmt.setDouble(6, soilTemp);
-            pstmt.setDouble(7, soilMoisture);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        // try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        //     pstmt.setString(1, time);
+        //     pstmt.setDouble(2, temperature);
+        //     pstmt.setDouble(3, precipitation);
+        //     pstmt.setDouble(4, cloudCover);
+        //     pstmt.setDouble(5, windSpeed);
+        //     pstmt.setDouble(6, soilTemp);
+        //     pstmt.setDouble(7, soilMoisture);
+        //     pstmt.executeUpdate();
+        // } catch (SQLException e) {
+        //     System.out.println(e.getMessage());
+        // }
+        WeatherData weather = new WeatherData();
+        weather.setTemperature(temperature);
+        weather.setPrecipitation(precipitation);
+        weather.setCloudCover(cloudCover);
+        weather.setWindSpeed(windSpeed);
+        weather.setSoilTemp(soilTemp);
+        weather.setSoilMoisture(soilMoisture);
+
+        return weatherDataRepository.save(weather);
     }
 
     // Add method to fetch weather data from an external API and save it to the database
